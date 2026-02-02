@@ -137,8 +137,8 @@ impl<'info> Withdraw<'info> {
         let signer_seeds: &[&[&[u8]]] = &[&[b"vault", vault_state_key, &[self.vault_state.vault_bump]]];
 
         let cpi_ctx = CpiContext::new_with_signer(cpi_program, cpi_accounts,signer_seeds);
-        let vault_lamports=self.vault.to_account_info().lamports();
-        transfer(cpi_ctx, vault_lamports)?;
+      
+        transfer(cpi_ctx, _amount)?;
 
         Ok(())
     }
