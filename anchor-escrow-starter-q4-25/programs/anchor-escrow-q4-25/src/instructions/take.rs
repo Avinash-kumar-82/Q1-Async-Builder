@@ -60,6 +60,9 @@ pub struct Take<'info> {
     pub maker_ata_b: InterfaceAccount<'info, TokenAccount>,
     #[account(
         mut,
+        has_one=maker,//use for comparing valid wallet 
+        has_one=mint_a,// used  for valid mint address
+        has_one=mint_b,    
         close = taker,
         seeds = [b"escrow", maker.key().as_ref(), escrow.seed.to_le_bytes().as_ref()],
         bump = escrow.bump
